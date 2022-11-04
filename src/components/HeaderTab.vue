@@ -1,5 +1,6 @@
 <template>
-    <v-row no-gutters class="header-tab">
+    <v-row no-gutters class="header-tab d-flex justify-center align-center">
+        memoアプリケーションです
     </v-row>
 </template>
 
@@ -12,6 +13,5 @@ export default {
 <style>
 .header-tab {
     height: 70px;
-    background-color: gray;
 }
 </style>
