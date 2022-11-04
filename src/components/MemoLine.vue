@@ -4,7 +4,7 @@
             かいがいしゅっちょう
         </v-col>
         <v-col cols="6" sm="2" class="d-flex justify-center align-center">
-            <v-btn class="ml-2 px-0">詳細</v-btn>
+            <v-btn class="ml-2 px-0" @click="SwitchDescriptionCard">詳細</v-btn>
             <v-btn class="ml-2 px-0">削除</v-btn>
         </v-col>
     </v-row>
@@ -12,13 +12,18 @@
 
 <script>
 export default {
-
+    props: {
+    },
+    methods: {
+        SwitchDescriptionCard() {
+            this.$emit('SwitchDescriptionCard')
+        }
+    }
 }
 </script>
 
 <style>
-
-.task-name{
+.task-name {
     background-color: #f5f5f5;
     border-radius: 6px;
 }

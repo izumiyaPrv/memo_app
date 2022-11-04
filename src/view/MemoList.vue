@@ -1,9 +1,10 @@
 <template>
     <div>
         <v-container class="mainwrapper">
-            <NavigationDrower/>
+            <NavigationDrower />
             <HeaderTab class="mb-3" />
-            <MemoLine />
+            <MemoLine @SwitchDescriptionCard="SwitchDescriptionCard" />
+            <DescriptionCard v-show="isDescriptionCard"/>
         </v-container>
     </div>
 </template>
@@ -12,13 +13,25 @@
 import MemoLine from '../components/MemoLine.vue'
 import HeaderTab from '../components/HeaderTab.vue'
 import NavigationDrower from '../components/NavigationDrower.vue'
+import DescriptionCard from '../components/DescriptionCard.vue'
 
 export default {
     components: {
         MemoLine,
         HeaderTab,
-        NavigationDrower
+        NavigationDrower,
+        DescriptionCard
     },
+    data() {
+        return {
+            isDescriptionCard: false
+        }
+    },
+    methods: {
+        SwitchDescriptionCard() {
+            this.isDescriptionCard = !this.isDescriptionCard
+        }
+    }
 }
 </script>
 
