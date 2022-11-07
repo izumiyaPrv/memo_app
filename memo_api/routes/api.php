@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MemoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/v1/add',[MemoController::class, 'upsert']);
+Route::delete('/v1/delete',[MemoController::class, 'delete']);
+Route::get('/v1/get',[MemoController::class, 'get']);
