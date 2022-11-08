@@ -14,7 +14,8 @@ class MemoController extends Controller
         $addStatus =
             DB::table('memos')->insert([
                 'memo' => $request->memo,
-                'created_at' => $today
+                'created_at' => $today,
+                'scheduled_date'=>$request->date,
             ]);
         return response($addStatus, 200);
     }

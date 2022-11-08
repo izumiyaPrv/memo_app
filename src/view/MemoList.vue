@@ -64,11 +64,12 @@ export default {
             }).catch(() => {
             })
         },
-        addMemo(memo) {
+        addMemo(memo,date) {
             if (!memo == "") {
                 const url = this.url + 'api/v1/add'
                 axios.post(url, {
-                    memo: memo
+                    memo: memo,
+                    date:date
                 }).then(() => {
                     this.getMemo();
                 }).catch(() => {

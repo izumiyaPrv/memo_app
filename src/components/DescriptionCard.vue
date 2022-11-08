@@ -4,12 +4,12 @@
             <v-col class="d-flex justify-center align-center font-weight-bold">MEMOの詳細</v-col>
         </v-row>
         <v-row>
-            <v-col class="d-flex justify-center align-center">作成日</v-col>
+            <v-col class="d-flex justify-center align-center">作成日時</v-col>
             <v-col class="d-flex justify-center align-center">{{ description ? description["created_at"] : "" }}</v-col>
         </v-row>
         <v-row>
-            <v-col class="d-flex justify-center align-center">更新日</v-col>
-            <v-col class="d-flex justify-center align-center">{{ description ? description["updated_at"] : "" }}</v-col>
+            <v-col class="d-flex justify-center align-center">予定日</v-col>
+            <v-col class="d-flex justify-center align-center">{{ description ? description["scheduled_date"] : "" }}</v-col>
         </v-row>
         <v-row>
             <v-col class="d-flex justify-center align-center">memo</v-col>
