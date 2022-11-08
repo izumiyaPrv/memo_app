@@ -4,7 +4,7 @@
             {{ memoData.memo }}
         </v-col>
         <v-col cols="6" sm="2" class="d-flex justify-center align-center">
-            <v-btn class="ml-2 px-0" @click="SwitchDescriptionCard">詳細</v-btn>
+            <v-btn class="ml-2 px-0" @click="SwitchDescriptionCard(memoData.id)">詳細</v-btn>
             <v-btn class="ml-2 px-0" @click="deleteMemo(memoData.id)">削除</v-btn>
         </v-col>
     </v-row>
@@ -24,8 +24,8 @@ export default {
         }
     },
     methods: {
-        SwitchDescriptionCard() {
-            this.$emit('SwitchDescriptionCard')
+        SwitchDescriptionCard(id) {
+            this.$emit('SwitchDescriptionCard',id)
         },
         deleteMemo(deleteId) {
             this.$emit('deleteMemo',deleteId)

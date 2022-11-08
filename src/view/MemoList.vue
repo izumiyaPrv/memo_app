@@ -6,7 +6,7 @@
             <AddMemoListVue @addMemo="addMemo" />
             <MemoLine @SwitchDescriptionCard="SwitchDescriptionCard" @deleteMemo="deleteMemo"
                 v-for="memoData in memosData" :key="memoData.id" :memoData="memoData" />
-            <DescriptionCard v-show="isDescriptionCard" />
+            <DescriptionCard class="description-card" v-show="isDescriptionCard" :description="description" de/>
         </v-container>
     </div>
 </template>
@@ -16,7 +16,7 @@ import MemoLine from '../components/MemoLine.vue'
 import HeaderTab from '../components/HeaderTab.vue'
 import NavigationDrower from '../components/NavigationDrower.vue'
 import DescriptionCard from '../components/DescriptionCard.vue'
-import AddMemoListVue from '@/components/AddMemoList.vue'
+import AddMemoListVue from '../components/AddMemoList.vue'
 import axios from 'axios'
 
 export default {
@@ -32,12 +32,15 @@ export default {
             isDescriptionCard: false,
             url: 'http://127.0.0.1:8000/',
             sort: 'desc',
-            memosData: []
+            memosData: [],
+            descriptionId: "",
+            descriptionDatas: ""
         }
     },
     methods: {
-        SwitchDescriptionCard() {
+        SwitchDescriptionCard(id) {
             this.isDescriptionCard = !this.isDescriptionCard
+            this.descriptionId = id;
         },
         getMemo() {
             const url = this.url + 'api/v1/get'
@@ -47,8 +50,7 @@ export default {
                 }
             }).then(response => {
                 this.memosData = response.data;
-            }).catch(error => {
-                console.log(error);
+            }).catch(() => {
             })
         },
         deleteMemo(deleteId) {
@@ -74,6 +76,11 @@ export default {
             }
         }
     },
+    computed: {
+        description: function () {
+            return this.memosData.filter(memo => memo.id === this.descriptionId)[0]
+        }
+    },
     mounted() {
         this.getMemo()
     }
@@ -83,5 +90,15 @@ export default {
 <style>
 .mainwrapper {
     max-width: 1200px;
+}
+
+.description-card {
+    width: 375px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 </style>
